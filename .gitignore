@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# uv 虚拟环境（304MB，绝不提交）
+.venv/
+venv/
+
+# 本地工具元数据
+.reasonix/
+
+# 导出临时文件
+book/_export_header.html
+book/_chrome_profile/
+book/_edge_profile/
