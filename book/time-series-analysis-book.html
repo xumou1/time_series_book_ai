@@ -721,6 +721,32 @@ LLM4TS，怎么不被带偏（五步）</a></li>
 <li><a href="#本书审阅记录全书级" id="toc-本书审阅记录全书级">21.5
 本书审阅记录（全书级）</a></li>
 </ul></li>
+<li><a href="#第-22-章-学术界如何做时序研究模块改进点与认可标准研究指南" id="toc-第-22-章-学术界如何做时序研究模块改进点与认可标准研究指南">第 22
+章 · 学术界如何做时序研究：模块、改进点与认可标准（研究指南）</a>
+<ul>
+<li><a href="#动机从会用到会研究" id="toc-动机从会用到会研究">22.1
+动机：从”会用”到”会研究”</a></li>
+<li><a href="#主流研究范式标准流水线与研究分层" id="toc-主流研究范式标准流水线与研究分层">22.2
+主流研究范式：标准流水线与研究分层</a></li>
+<li><a href="#模块地图时序模型的积木" id="toc-模块地图时序模型的积木">22.3 模块地图：时序模型的”积木”</a></li>
+<li><a href="#改进点总览改什么作用是什么" id="toc-改进点总览改什么作用是什么">22.4
+改进点总览：改什么、作用是什么</a></li>
+<li><a href="#评判指标完整清单" id="toc-评判指标完整清单">22.5
+评判指标：完整清单</a></li>
+<li><a href="#在多少指标上赢才算被认可学术通行惯例" id="toc-在多少指标上赢才算被认可学术通行惯例">22.6
+“在多少指标上赢才算被认可”：学术通行惯例</a></li>
+<li><a href="#一篇标准论文的结构示例骨架" id="toc-一篇标准论文的结构示例骨架">22.7
+一篇标准论文的结构（示例骨架）</a></li>
+<li><a href="#学术研究常见陷阱与本书前面呼应" id="toc-学术研究常见陷阱与本书前面呼应">22.8
+学术研究常见陷阱（与本书前面呼应）</a></li>
+<li><a href="#相似问题与已有解决方案历史回响-20" id="toc-相似问题与已有解决方案历史回响-20">22.9
+相似问题与已有解决方案：历史回响</a></li>
+<li><a href="#本章小结-20" id="toc-本章小结-20">22.10 本章小结</a></li>
+<li><a href="#练习与自测-20" id="toc-练习与自测-20">22.11
+练习与自测</a></li>
+<li><a href="#本章审阅记录-20" id="toc-本章审阅记录-20">22.12
+本章审阅记录</a></li>
+</ul></li>
 <li><a href="#附录-a-术语表中英对照" id="toc-附录-a-术语表中英对照">附录
 A · 术语表（中英对照）</a></li>
 <li><a href="#附录-b-工具安装与速查" id="toc-附录-b-工具安装与速查">附录
@@ -8062,6 +8088,463 @@ Holt-Winters（周季节）+ SARIMA。</li>
 </table>
 <p><strong>注</strong>：本记录在全书完成时填写；单章审阅记录见各章
 9.x/10.x 节。</p>
+<h1 id="第-22-章-学术界如何做时序研究模块改进点与认可标准研究指南">第 22
+章 · 学术界如何做时序研究：模块、改进点与认可标准（研究指南）</h1>
+<p><strong>本章目标</strong>：学完本章后，你能①说出主流时序研究的”标准流水线”与简单/复杂研究的分层；②像看图纸一样读懂一篇论文”改了什么模块、作用是什么”；③列出评判指标的完整清单；④知道”在多少指标上赢才算被认可”的学术通行惯例。</p>
+<blockquote>
+<p>定位说明：本书主体（第 1–21
+章）教你”用”时间序列；本章是<strong>面向想进入研究领域的读者</strong>的扩展指南——把前面各章零散的”改良点—作用—评估”整理成一套可操作的学术研究框架。</p>
+</blockquote>
+<hr />
+<h2 id="动机从会用到会研究">22.1 动机：从”会用”到”会研究”</h2>
+<p>读完前 21
+章，你已经能：用统计方法建模、用深度学习预测、用评估协议判断好坏。但如果你去读一篇时序论文，可能会困惑：<em>他们为什么要这样改？为什么这样的结果”算数”？</em></p>
+<p>答案藏在学术共同体的一套<strong>隐性惯例</strong>里：</p>
+<blockquote>
+<p><strong>研究 =
+在标准流水线上，对一个模块做一处有动机的改进，并用公认的指标和基线证明这个改进真的有用。</strong></p>
+</blockquote>
+<p>本章把这套惯例讲清楚：研究怎么做（22.2–22.3）、改什么（22.4）、拿什么评判（22.5–22.6）、怎么写（22.7）、别踩什么坑（22.8）。</p>
+<hr />
+<h2 id="主流研究范式标准流水线与研究分层">22.2
+主流研究范式：标准流水线与研究分层</h2>
+<h3 id="标准流水线几乎所有时序论文的骨架">22.2.1
+标准流水线（几乎所有时序论文的骨架）</h3>
+<pre><code>① 问题定义：预测什么（单/多变量）、多长（horizon）
+② 方法设计：提出/改进一个模型（本章 22.3、22.4）
+③ 实验：标准数据集 × 强基线 × 指标（22.5）→ 对比表
+④ 消融：拆掉每个组件，证明&quot;每个改动都有用&quot;
+⑤ 可视化/解释：注意力图、分解图、预测样例
+⑥ 结论：在多少组合上赢了（22.6）</code></pre>
+<p><strong>为什么是这套流水线</strong>：它让不同论文<strong>可比</strong>——同样的数据集、同样的指标、同样的基线，谁好谁坏一目了然。这也正是第
+19 章”评估协议”在学术界的制度化版本。</p>
+<h3 id="简单-vs-复杂研究的分层">22.2.2 简单 vs 复杂研究的分层</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>层级</th>
+<th>典型研究对象</th>
+<th>例子</th>
+<th>难度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>简单</strong></td>
+<td>单变量、单一数据、统计/轻量改进</td>
+<td>某 GARCH 变体、某指数平滑的鲁棒版本</td>
+<td>低（重统计功底）</td>
+</tr>
+<tr>
+<td><strong>中等</strong></td>
+<td>单变量/多变量 + 一个深度模型改进</td>
+<td>给 LSTM 加注意力、改损失函数</td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>复杂</strong></td>
+<td>长序列、多变量、跨域、概率/生成式</td>
+<td>Transformer 变体、扩散预测、基础模型</td>
+<td>高（重工程与算力）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>要点</strong>：<strong>简单研究 ≠
+低价值</strong>。统计方向的精细改进（如 GARCH
+族的扩展）在金融计量顶刊（Journal of Econometrics
+等）依然吃香；深度方向拼的是”在标准基准上全面胜出”。选择哪一层，取决于你的数学功底与算力资源。</p>
+<h3 id="标准基准数据集深度研究的事实标准">22.2.3
+标准基准数据集（深度研究的事实标准）</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>数据集</th>
+<th>领域</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ETT</strong>（电力变压器）</td>
+<td>能源</td>
+<td>15 分钟采样，强日/周周期，深度学习基准之王</td>
+</tr>
+<tr>
+<td><strong>Weather</strong></td>
+<td>气象</td>
+<td>21 个变量，非平稳强</td>
+</tr>
+<tr>
+<td><strong>Electricity</strong></td>
+<td>电力</td>
+<td>321 个变量，多变量依赖</td>
+</tr>
+<tr>
+<td><strong>Traffic</strong></td>
+<td>交通</td>
+<td>862 个传感器，强周期</td>
+</tr>
+<tr>
+<td><strong>ILI</strong>（流感）</td>
+<td>医疗</td>
+<td>周数据、短样本、突发性强</td>
+</tr>
+</tbody>
+</table>
+<p><strong>预测长度（horizon）惯例</strong>：96 / 192 / 336 / 720（ETT
+等按 15 分钟=1 步；即 1~30 天）。<strong>论文要在每个 horizon
+上都报结果</strong>——只报一个 horizon 会被审稿人质疑。</p>
+<hr />
+<h2 id="模块地图时序模型的积木">22.3 模块地图：时序模型的”积木”</h2>
+<p>第 15、17
+章你已经见过这些模块。这里把它们<strong>系统化成一张装配图</strong>——任何时序模型都是这些积木的组合，论文的”改进”几乎总是替换/增强<strong>其中一块</strong>：</p>
+<pre><code>输入处理层        序列建模层         输出层
+─────────        ─────────        ─────────
+· 分片 patch      · 注意力变体       · 直接多步 / 自回归
+· 通道策略        · MLP             · 点预测 vs 分布
+  (独立/混合)     · 卷积/TCN        · 生成式（扩散）
+· 归一化 RevIN    · RNN/LSTM        · 区间/分位数
+· 嵌入            · 状态空间 Mamba
+ (时间/频率)      · 线性层
+                 · 结构先验：
+                   分解(趋势/季节)
+                   自相关/频域
+──────────────────────────────────────────
+训练层：损失函数(MSE/分位数/似然) · 掩码自监督/预训练 · 微调</code></pre>
+<p><strong>读懂一篇论文的速记法</strong>：<em>“它改了哪个积木？为什么改（动机）？改完有什么效果（消融里哪一行提升了）？”</em>
+——三问齐了，这篇论文你就读懂了。</p>
+<hr />
+<h2 id="改进点总览改什么作用是什么">22.4
+改进点总览：改什么、作用是什么</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>改进对象（积木）</th>
+<th>作用（动机）</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输入分片 patch</strong></td>
+<td>局部模式更稳、计算降为 1/P²、视野变长</td>
+<td>PatchTST</td>
+</tr>
+<tr>
+<td><strong>稀疏/线性注意力</strong></td>
+<td>复杂度 O(L²)→O(L log L)，长序列可行</td>
+<td>Informer</td>
+</tr>
+<tr>
+<td><strong>分解内嵌</strong></td>
+<td>显式建模趋势/季节（结构先验）</td>
+<td>Autoformer、DLinear</td>
+</tr>
+<tr>
+<td><strong>归一化（RevIN）</strong></td>
+<td>缓解非平稳、防泄漏（统计只用训练段）</td>
+<td>RevIN</td>
+</tr>
+<tr>
+<td><strong>通道交互策略</strong></td>
+<td>多变量关系建模 vs 防通道间干扰</td>
+<td>iTransformer、PatchTST</td>
+</tr>
+<tr>
+<td><strong>输出分布化</strong></td>
+<td>从点预测升级为概率预测（区间/分位数）</td>
+<td>DeepAR、Chronos</td>
+</tr>
+<tr>
+<td><strong>预训练/掩码自监督</strong></td>
+<td>跨数据集表示学习、少样本</td>
+<td>PatchTST 预训练、基础模型</td>
+</tr>
+<tr>
+<td><strong>高效状态空间</strong></td>
+<td>近线性复杂度长程建模</td>
+<td>S-Mamba、TimeMachine</td>
+</tr>
+</tbody>
+</table>
+<p><strong>通用规律（背下来）</strong>：<em>时序论文的改进要么是”更高效”（降复杂度/降参数），要么是”更准”（塞进结构先验/更好的表示），要么是”更全面”（概率输出/多任务）</em>。一篇论文通常只占其一，别贪多。</p>
+<hr />
+<h2 id="评判指标完整清单">22.5 评判指标：完整清单</h2>
+<h3 id="点预测指标">22.5.1 点预测指标</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MSE</strong></td>
+<td>平方误差均值</td>
+<td>惩罚大误差，最常用</td>
+</tr>
+<tr>
+<td><strong>MAE</strong></td>
+<td>绝对误差均值</td>
+<td>直观，对离群点稳健</td>
+</tr>
+<tr>
+<td><strong>RMSE</strong></td>
+<td>MSE 开根号</td>
+<td>与数据同单位</td>
+</tr>
+<tr>
+<td><strong>MAPE / SMAPE</strong></td>
+<td>百分比误差</td>
+<td>注意：真实值为 0 时失效</td>
+</tr>
+<tr>
+<td><strong>MASE</strong></td>
+<td>相对朴素基线的误差</td>
+<td>跨数据集可比（第 19 章）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="概率预测指标做了分布输出就必报">22.5.2
+概率预测指标（做了分布输出就必报）</h3>
+<ul>
+<li><strong>CRPS</strong>：分布与真值的吻合度（越低越好，第 16
+章）；</li>
+<li><strong>Quantile Loss / Pinball Loss</strong>：分位数损失；</li>
+<li><strong>区间覆盖率</strong>：90% 区间应盖住约 90% 真值（第 16、19
+章）。</li>
+</ul>
+<h3 id="效率指标顶会越来越看重">22.5.3 效率指标（顶会越来越看重）</h3>
+<ul>
+<li>参数量（Params）、FLOPs、训练/推理时间、显存。</li>
+</ul>
+<h3 id="报告惯例重要">22.5.4 报告惯例（重要）</h3>
+<pre><code>每个数据集 × 每个 horizon（96/192/336/720）→ 一张对比表
+多次运行 → 报 均值 ± 标准差（不是单次最好）
+全部指标都要报，不能只报对自己有利的那个</code></pre>
+<hr />
+<h2 id="在多少指标上赢才算被认可学术通行惯例">22.6
+“在多少指标上赢才算被认可”：学术通行惯例</h2>
+<p>这是你直接问的问题。<strong>没有官方硬性数字</strong>，但学术共同体（尤其机器学习顶会）有相当一致的隐性标准：</p>
+<p><strong>核心标准：在”大多数”基准组合上全面胜出，且消融支持设计动机。</strong></p>
+<p>具体拆解（通行惯例，非规则）：</p>
+<ol type="1">
+<li><strong>覆盖面</strong>：通常 3~5
+个数据集（跨领域：能源/气象/交通…），每个数据集报 <strong>4 个
+horizon</strong>（96/192/336/720）——即 12~20
+个”数据集×horizon”组合。</li>
+<li><strong>胜出比例</strong>：<strong>一般要求在 ≥
+2/3（约三分之二）以上的组合上取得最优（SOTA）或与最优并列</strong>。只在
+1~2 个数据集上赢，通常不被认可（会被审稿人认为是”挑数据”）。</li>
+<li><strong>必须是”显著”</strong>：多次运行（≥3
+次）报均值±标准差；两方法差距小于标准差时不算赢。<strong>可加
+Diebold–Mariano
+检验</strong>（两预测误差差异的显著性检验，时序预测的”显著性检验”标准工具）。</li>
+<li><strong>消融必须成立</strong>：去掉你加的每个组件，性能应下降——<strong>这是”改进有效”的因果证据</strong>，比”赢了几个指标”更重要。</li>
+<li><strong>基线必须够强</strong>：不能只对比老模型——要对比当时的最新
+SOTA + 统计基线（ETS/ARIMA/线性）。第 15
+章的线性之争已经把”不跑线性基线”变成审稿红线。</li>
+<li><strong>同计算预算</strong>：对比时模型规模/训练成本要公平，否则会被质疑”用算力换精度”。</li>
+</ol>
+<p><strong>一句话回答你的问题</strong>：<em>通常在 12~20
+个”数据集×horizon”组合里赢下三分之二以上、且消融和强基线都过关，改进才会被学术共同体认可。</em>
+——注意，<strong>“赢了”指的是显著优于，不是小数点后第三位的侥幸。</strong></p>
+<hr />
+<h2 id="一篇标准论文的结构示例骨架">22.7
+一篇标准论文的结构（示例骨架）</h2>
+<p>以”提出某个新模块 M 改进预测”为例：</p>
+<pre><code>摘要：一句话痛点 + 方法名 + 三个数字（赢了几个数据集、降了多少误差）
+1 引言：为什么现有方法不够（如&quot;注意力无视季节结构&quot;）
+2 相关工作：与 3~5 篇最近工作区分（强调你的动机不同）
+3 方法：模型图 + 每个组件公式 + 每个组件的动机（一段一动机）
+4 实验：
+  4.1 设置：数据集、horizon、基线列表、实现细节（种子/算力）
+  4.2 主结果：对比表（均值±标准差，赢的加粗）
+  4.3 消融：拆模块 → 证明每块有用
+  4.4 效率：参数/时间对比
+  4.5 可视化：预测样例、注意力/分解图
+5 结论：两句话（做了什么 + 效果），别再自吹</code></pre>
+<p><strong>审稿人最先看的三处</strong>：主结果表（赢面够不够）、消融（动机是否兑现）、基线列表（有没有偷懒）。——这三处全过，论文基本就立住了。</p>
+<hr />
+<h2 id="学术研究常见陷阱与本书前面呼应">22.8
+学术研究常见陷阱（与本书前面呼应）</h2>
+<ol type="1">
+<li><strong>选择性报告</strong>：只报赢的数据集/horizon——<strong>审稿人查全表，报全才有说服力</strong>。</li>
+<li><strong>弱基线对比</strong>：用 2020
+年的模型当基线，显得自己强——<strong>基线用当时 SOTA</strong>（第 15
+章教训）。</li>
+<li><strong>不做消融</strong>：不知道赢在哪个组件——<strong>消融是”改进有效”的唯一因果证据</strong>。</li>
+<li><strong>归一化/预处理泄漏</strong>：全序列归一化、特征时点越界——<strong>第
+13、19 章的铁律在论文里同样致命</strong>。</li>
+<li><strong>单次运行报最优</strong>：换种子成绩飘忽——<strong>报均值±标准差（≥3
+次）</strong>。</li>
+<li><strong>不报效率</strong>：模型大 10 倍只赢
+1%——<strong>报参数/时间，让读者判断值不值</strong>。</li>
+<li><strong>“创新”拼贴而非改进</strong>：堆砌多个已有模块，无清晰动机——<strong>每个组件都要回答”为什么改”</strong>。</li>
+</ol>
+<hr />
+<h2 id="相似问题与已有解决方案历史回响-20">22.9
+相似问题与已有解决方案：历史回响</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>本环节的困难</th>
+<th>谁遇到过</th>
+<th>如何解决</th>
+<th>本书对应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“改进到底有没有用”</td>
+<td>第 15 章线性之争</td>
+<td>消融 + 强基线 + 全面报告</td>
+<td>第 15、19 章</td>
+</tr>
+<tr>
+<td>“区间/概率预测怎么评”</td>
+<td>概率预测文献</td>
+<td>CRPS + 覆盖率（第 16、19 章）</td>
+<td>第 16、19 章</td>
+</tr>
+<tr>
+<td>“两模型差异是否显著”</td>
+<td>预测评估（Diebold &amp; Mariano 1995）</td>
+<td><strong>DM 检验</strong>：误差差的显著性检验</td>
+<td>本章；第 19 章</td>
+</tr>
+<tr>
+<td>“跨数据集怎么比”</td>
+<td>M4/M5 竞赛</td>
+<td>MASE（朴素基线归一化）</td>
+<td>第 6 章</td>
+</tr>
+<tr>
+<td>“基线的地位”</td>
+<td>Makridakis 竞赛、LTSF-Linear</td>
+<td>统计/线性基线成为标配</td>
+<td>第 6、15 章</td>
+</tr>
+</tbody>
+</table>
+<p><strong>核心启示</strong>：学术认可的本质是<strong>可复现的全面优势</strong>——不是”我赢了”，而是”我在公认的台面上、用公认的尺子、赢过了公认的对手，并且能解释为什么赢”。</p>
+<hr />
+<h2 id="本章小结-20">22.10 本章小结</h2>
+<ol type="1">
+<li><strong>研究 = 标准流水线 + 一处有动机的模块改进 +
+公认指标/基线证明</strong>。</li>
+<li><strong>模块地图</strong>：输入处理/序列建模/结构先验/输出/训练五大积木——论文的改进几乎总是替换其中一块。</li>
+<li><strong>指标</strong>：点预测（MSE/MAE/MASE…）+ 概率（CRPS/覆盖率）+
+效率（参数/时间），全报。</li>
+<li><strong>认可惯例</strong>：在 12~20
+个”数据集×horizon”组合中<strong>赢下 ≥2/3
+且显著</strong>，消融成立、强基线过关——改进才算数。</li>
+<li>陷阱：选择性报告、弱基线、无消融、泄漏——全是本书前面讲过的”评估纪律”的学术版。</li>
+</ol>
+<hr />
+<h2 id="练习与自测-20">22.11 练习与自测</h2>
+<ol type="1">
+<li>★ 标准流水线的六个环节是什么？（提示：22.2.1）</li>
+<li>★ 一篇深度时序论文通常报几个数据集、几个
+horizon？（提示：22.2.3/22.6）</li>
+<li>★★ 为什么”消融”比”赢了多少指标”更重要？（提示：22.6 第 4 条）</li>
+<li>★★ 两个模型 MSE 相差 0.5%，一个跑 3 次标准差 2%，另一个
+1%——能说前者赢了吗？（提示：22.6 第 3 条）</li>
+<li>★★★ 挑一篇近期时序论文（如 iTransformer 或 PatchTST
+原论文），填写”模块三问”：①它改了哪个积木？②为什么改（动机）？③消融里哪一行证明了它有用？（提示：22.3
+速记法）</li>
+</ol>
+<p><strong>简答提示</strong>：1
+问题定义→方法设计→实验→消融→可视化→结论；2 3~5 个数据集、4 个
+horizon（96/192/336/720）；3
+消融证明”赢来自你的改进而不是模型体积/运气”——是因果证据；4 不能——0.5%
+远小于标准差 1~2%，差异不显著；5 如 PatchTST：改了输入积木（patch）→
+动机是局部模式+降计算 → 消融中”去 patch 退化为单点输入”行性能下降。</p>
+<hr />
+<h2 id="本章审阅记录-20">22.12 本章审阅记录</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>审阅项</th>
+<th>结论</th>
+<th>问题与修订</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1 零基础可理解性</td>
+<td>✔ 通过（自查）</td>
+<td>流水线/模块地图/改进表均用前 21
+章概念；术语（horizon、SOTA、消融、DM 检验）在出现处解释</td>
+</tr>
+<tr>
+<td>R2 为何行动</td>
+<td>✔ 通过</td>
+<td>每节开头有”为什么”（为何这套流水线、为何报全表）</td>
+</tr>
+<tr>
+<td>R3 效果明确</td>
+<td>✔ 通过</td>
+<td>22.6 给出可操作的”2/3 组合+显著+消融”标准；22.7 给出论文骨架</td>
+</tr>
+<tr>
+<td>R4 陷阱覆盖</td>
+<td>✔ 通过</td>
+<td>7 条全部映射到前面章节的评估纪律</td>
+</tr>
+<tr>
+<td>R5 相似问题映射</td>
+<td>✔ 通过</td>
+<td>5 行映射（线性之争、CRPS、DM 检验、MASE、基线地位）</td>
+</tr>
+<tr>
+<td>R6 示例可复现</td>
+<td>✔ 通过</td>
+<td>论文骨架与模块三问示例（PatchTST）可对照原论文验证</td>
+</tr>
+<tr>
+<td>R7 章节衔接</td>
+<td>✔ 通过</td>
+<td>开头说明定位（主体在 21 章结束，本章为研究指南）</td>
+</tr>
+<tr>
+<td>R8 练习有效</td>
+<td>✔ 通过</td>
+<td>5 题含”多少指标上赢”的直接回答与实战阅读任务</td>
+</tr>
+</tbody>
+</table>
+<p><strong>审阅方式</strong>：作者自查（R1–R8
+逐项）；本章为研究指南章，“认可标准”部分为学术共同体通行惯例（非硬性规则），措辞已注明。</p>
 <h1 id="附录-a-术语表中英对照">附录 A · 术语表（中英对照）</h1>
 <blockquote>
 <p>按字母顺序；括号内为首次出现的章节。</p>
@@ -8469,18 +8952,18 @@ Holt-Winters（周季节）+ SARIMA。</li>
 </blockquote>
 <h2 id="b.1-python-生态一条命令装全家">B.1 Python
 生态（一条命令装全家）</h2>
-<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas numpy matplotlib scipy statsmodels scikit-learn</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install statsforecast neuralforecast       <span class="co"># Nixtla：统计+深度基线（第 6、8 章）</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install darts                                <span class="co"># 统一 API 预测库（第 6–16 章实践）</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install sktime                               <span class="co"># scikit-learn 风格时序工具箱（第 13 章）</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install gluonts                              <span class="co"># 深度概率预测（DeepAR，第 16 章）</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install chronos-forecasting uni2ts           <span class="co"># 基础模型推理（第 17 章）</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install mapie                                <span class="co"># 保形预测（第 19 章）</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install arch                                 <span class="co"># GARCH 族（第 10 章）</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pandas numpy matplotlib scipy statsmodels scikit-learn</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install statsforecast neuralforecast       <span class="co"># Nixtla：统计+深度基线（第 6、8 章）</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install darts                                <span class="co"># 统一 API 预测库（第 6–16 章实践）</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install sktime                               <span class="co"># scikit-learn 风格时序工具箱（第 13 章）</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install gluonts                              <span class="co"># 深度概率预测（DeepAR，第 16 章）</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install chronos-forecasting uni2ts           <span class="co"># 基础模型推理（第 17 章）</span></span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install mapie                                <span class="co"># 保形预测（第 19 章）</span></span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install arch                                 <span class="co"># GARCH 族（第 10 章）</span></span></code></pre></div>
 <h2 id="b.2-r-生态">B.2 R 生态</h2>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;forecast&quot;</span>, <span class="st">&quot;fable&quot;</span>, <span class="st">&quot;tsibble&quot;</span>, <span class="st">&quot;bsts&quot;</span>))</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># forecast/fable：ETS、ARIMA、STL、概率预测（第 6、8 章）</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># bsts：贝叶斯结构时间序列（第 9 章）</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;forecast&quot;</span>, <span class="st">&quot;fable&quot;</span>, <span class="st">&quot;tsibble&quot;</span>, <span class="st">&quot;bsts&quot;</span>))</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># forecast/fable：ETS、ARIMA、STL、概率预测（第 6、8 章）</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># bsts：贝叶斯结构时间序列（第 9 章）</span></span></code></pre></div>
 <h2 id="b.3-按任务速查">B.3 按任务速查</h2>
 <table>
 <colgroup>
@@ -8608,10 +9091,10 @@ gluonts。</li>
 本书配套示例项目（<code>examples/</code>）</h2>
 <p>本书自带一个 <strong>uv
 管理的可运行示例项目</strong>（<code>E:\Dropbox\TimeSeries\examples</code>），数据与插图均与书中章节一一对应：</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> examples</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync                                     <span class="co"># 安装依赖（matplotlib/pandas/numpy/statsmodels）</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python scripts/make_data.py          <span class="co"># 生成示例数据 → data/</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python scripts/make_figures.py       <span class="co"># 生成书中插图 → book/figures/</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> examples</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync                                     <span class="co"># 安装依赖（matplotlib/pandas/numpy/statsmodels）</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python scripts/make_data.py          <span class="co"># 生成示例数据 → data/</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python scripts/make_figures.py       <span class="co"># 生成书中插图 → book/figures/</span></span></code></pre></div>
 <ul>
 <li>数据：景区游客量（第 2/8 章）、奶茶店销售额（第 20
 章案例）、白噪声/随机游走/GARCH 模拟（第 3/4/10 章）；</li>

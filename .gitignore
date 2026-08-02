@@ -14,3 +14,4 @@ venv/
 book/_export_header.html
 book/_chrome_profile/
 book/_edge_profile/
+reasonix.toml
